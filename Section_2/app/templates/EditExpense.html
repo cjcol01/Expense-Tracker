@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Expense</title>
+        <link rel="icon" type="image/x-icon" href="../static/logo.png" />
+
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        />
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/home">Expense Tracker</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/visualise">Visualise Data</a></li>
+                    <li><a href="/expenses">View Expenses</a></li>
+                    <li><a href="/add_expense">Add Transaction</a></li>
+                </ul>
+            </div>
+        </nav>
+    </head>
+    <body>
+        <h1>Edit Expense</h1>
+        <form action="{{ url_for('edit_expense', id=expense.id) }}" method="post">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.name.label }}<br />
+                {{ form.name(value=expense.name) }}
+            </p>
+            <p>
+                {{ form.cost.label }}<br />
+                {{ form.cost(value=expense.cost) }}
+            </p>
+            <p>
+                <input type="submit" value="Submit" />
+            </p>
+        </form>
+    </body>
+</html>

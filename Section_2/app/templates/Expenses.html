@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Expenses</title>
+        <script src="../static/sort.js"></script>
+        <link rel="icon" type="image/x-icon" href="../static/logo.png" />
+
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        />
+        <link rel="stylesheet" href="../static/Expenses.css" />
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/home">Expense Tracker</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/visualise">Visualise Data</a></li>
+                    <li class="active"><a href="/expenses">View Expenses</a></li>
+                    <li><a href="/add_expense">Add Transaction</a></li>
+                </ul>
+            </div>
+        </nav>
+    </head>
+    <body>
+        <div class="header-container">
+            <h1>Expenses</h1>
+            <div class="display">
+                <button onclick="filterTable('expense')">Show Expenses</button>
+                <button onclick="filterTable('income')">Show Income</button>
+                <button onclick="filterTable('')">Show All</button>
+            </div>
+        </div>
+
+        <table id="expenseTable" , class="sortable">
+            <thead>
+                <tr>
+                    <th class="name">Name</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if expenses %} {% for expense in expenses %}
+                <tr class="{{ 'expense' if expense.expense_type else 'income' }}">
+                    <td>{{ expense.name }}</td>
+                    <td>£{{ expense.cost }}</td>
+                    <td>{{ "Expense" if expense.expense_type else "Income" }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_expense', id=expense.id) }}">
+                            <button>Edit</button>
+                        </a>
+                        <button class="delete-button" data-id="{{ expense.id }}">Delete</button>
+                    </td>
+                </tr>
+                {% endfor %} {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center">
+                        No Data yet, try adding some below!
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <form action="/add_expense" method="get">
+            <button type="submit">Add Transaction</button>
+        </form>
+
+        <form action="/goal" method="get">
+            <button type="submit">Add or Edit Goal</button>
+        </form>
+
+        <form id="clearDataForm" action="/clear_data" method="post">
+            <button type="button" onclick="confirmAndSubmit()">Clear ALL Data</button>
+        </form>
+
+        <script>
+            function confirmAndSubmit() {
+                const userConfirmed = window.confirm("Are you sure you want to clear ALL data?");
+                if (userConfirmed) {
+                    document.getElementById("clearDataForm").submit();
+                }
+            }
+        </script>
+    </body>
+</html>

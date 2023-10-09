@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Visualise Data</title>
+        <!-- pie chart cdn  -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        />
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/home">Expense Tracker</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/home">Home</a></li>
+                    <li class="active"><a href="">Visualise Data</a></li>
+                    <li><a href="/expenses">View Expenses</a></li>
+                    <li><a href="/add_expense">Add Transaction</a></li>
+                </ul>
+            </div>
+        </nav>
+    </head>
+    <body>
+        <h1>Total Expenditure</h1>
+        <h3 id="expense">{{total_expense}}</h3>
+        <h1>Total Income</h1>
+        <h3 id="income">{{total_income}}</h3>
+        <h1>Income - Expenses</h1>
+        <h3>{{total_income - total_expense}}</h3>
+
+        {% if goal %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Goal Name</th>
+                    <th>Goal Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="goal_name">{{ goal.name }}</td>
+                    <td id="goal_value">{{ goal.cost }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% else %}
+        <p>No goal set yet.</p>
+        {% endif %}
+
+        <div style="width: 80%; margin: auto">
+            <canvas id="myPieChart"></canvas>
+        </div>
+
+        <div style="width: 80%; margin: auto">
+            <canvas id="myBarChart"></canvas>
+        </div>
+
+        <script src="../static/pie.js"></script>
+    </body>
+</html>
