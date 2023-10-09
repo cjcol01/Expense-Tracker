@@ -2,18 +2,18 @@
 
 ## Automatic Startup
 - on linux, run
+  
     ```./flaskstart.sh```
 
 ## Manual Startup
 - start virtual enviroment from root folder (Flask):
-  
-      ```source flask/bin/activate```
+
+      source flask/bin/activate```
 - enter enviroment variables:
   
-    ```export FLASK_APP=run.py```
-
-    ```export FLASK_DEBUG=1```
+      export FLASK_APP=run.py
+      export FLASK_DEBUG=1
 - flask run
-  
+
     ```flask run```
-- navigate to https://127.0.0.1/visualise
+- navigate to http://127.0.0.1:5000/visualise
