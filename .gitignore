@@ -1,0 +1,16 @@
+__pychache__/
+*.py[cod]
+*.pyc
+migrations
+
+app/__pycache__/
+
+.env
+*.log
+
+instance/
+
+venv/
+
+.idea/
+.vscode/

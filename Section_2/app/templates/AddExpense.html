@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Transaction</title>
+        <link rel="stylesheet" href="../static/Add.css" />
+        <link rel="icon" type="image/x-icon" href="../static/logo.png" />
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        />
+
+        <html lang="en">
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/home">Expense Tracker</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/visualise">Visualise Data</a></li>
+                    <li><a href="/expenses">View Expenses</a></li>
+                    <li class="active"><a href="/add_expense">Add Transaction</a></li>
+                </ul>
+            </div>
+        </nav>
+    </head>
+    <body>
+        <h1>Add Expense</h1>
+        <form action="" method="post" label="transaction details">
+            <p label="test">
+                Name <br />
+                {{ form.name }}
+            </p>
+
+            <p>
+                Cost <br />
+                {{ form.cost }}<br />
+            </p>
+            <p>Type {{ form.expense_type }}</p>
+
+            <p><input type="submit" value="Add Expense" /></p>
+            {{ form.hidden_tag() }}
+        </form>
+    </body>
+</html>
