@@ -1,8 +1,18 @@
 from app import db
 
-class Property(db.Model):
+class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    address = db.Column(db.String(500), index=True, unique=True)
-    start_date = db.Column(db.DateTime)
-    duration = db.Column(db.Integer)
-    rent = db.Column(db.Float)
+    name = db.Column(db.String(200))
+    cost = db.Column(db.Float)
+    expense_type = db.Column(db.Boolean, default=False)
+
+# class Income(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(200))
+#     cost = db.Column(db.Float)
+#     # expense_type = db.Column(db.String(7))
+
+class Goal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(200))
+    cost = db.Column(db.Float)
