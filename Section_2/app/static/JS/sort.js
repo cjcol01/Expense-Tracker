@@ -45,7 +45,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     deleteButtons.forEach((button) => {
         button.addEventListener("click", function (e) {
-            const expenseId = e.target.getAttribute("data-id");
+            const expenseId = e.currentTarget.getAttribute("data-id");
+
+            if (expenseId === null) {
+                console.error("Expense ID is null.");
+                return;
+            }
+
             deleteExpense(expenseId);
         });
     });

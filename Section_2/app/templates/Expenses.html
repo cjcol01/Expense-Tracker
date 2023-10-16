@@ -2,23 +2,22 @@
 <html>
     <head>
         <title>Expenses</title>
-        <script src="../static/sort.js"></script>
-        <link rel="icon" type="image/x-icon" href="../static/logo.png" />
+        <script src="../static/JS/sort.js"></script>
+        <link rel="icon" type="image/x-icon" href="../static//Images/logo.png" />
 
         <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
         />
-        <link rel="stylesheet" href="../static/Expenses.css" />
+        <link rel="stylesheet" href="../static/CSS/Expenses.css" />
         
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/home">Expense Tracker</a>
+                    <a class="navbar-brand" href="#">Expense Tracker</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/visualise">Visualise Data</a></li>
+                    <li><a href="/">Visualise Data</a></li>
                     <li class="active"><a href="/expenses">View Expenses</a></li>
                     <li><a href="/add_expense">Add Transaction</a></li>
                 </ul>
@@ -26,8 +25,12 @@
         </nav>
 
         <html lang="en">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     </head>
     <body>
+        <div class="everything">
         <div class="header-container">
             <h1>Expenses</h1>
             <div class="display">
@@ -37,7 +40,7 @@
             </div>
         </div>
 
-        <table id="expenseTable" , class="sortable">
+        <table id="expenseTable" class="responsive-table">
             <thead>
                 <tr>
                     <th class="name">Name</th>
@@ -50,14 +53,20 @@
                 {% if expenses %} {% for expense in expenses %}
                 <tr class="{{ 'expense' if expense.expense_type else 'income' }}">
                     <td>{{ expense.name }}</td>
-                    <td>£{{ expense.cost }}</td>
+                    <td>£{{'%0.2f' %  expense.cost }}</td>
                     <td>{{ "Expense" if expense.expense_type else "Income" }}</td>
+
+
                     <td>
-                        <a href="{{ url_for('edit_expense', id=expense.id) }}">
-                            <button>Edit</button>
-                        </a>
-                        <button class="delete-button" data-id="{{ expense.id }}">Delete</button>
+                    <a class="icon edit" href="{{ url_for('edit_expense', id=expense.id) }}">
+                        <img src="../static/Images/edit.png" alt="Edit">
+                    </a>
+                    <a class="delete-button icon edit" data-id="{{ expense.id }}" >
+                        <img src="../static/Images/delete.png" alt="Delete">
+                    </a>
+
                     </td>
+
                 </tr>
                 {% endfor %} {% else %}
                 <tr>
@@ -89,5 +98,6 @@
                 }
             }
         </script>
+        </div>
     </body>
 </html>

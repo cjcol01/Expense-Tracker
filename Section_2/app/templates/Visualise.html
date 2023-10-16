@@ -2,64 +2,81 @@
 <html>
     <head>
         <title>Visualise Data</title>
-        <!-- pie chart cdn  -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap"
+            rel="stylesheet"
+        />
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
         />
+        <link rel="icon" type="image/x-icon" href="../static/Images/logo.png" />
+        <link rel="stylesheet" href="../static/CSS/Visualise.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <html lang="en" >
+    </head>
 
-        <html lang="en">
-
+    <body>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/home">Expense Tracker</a>
+                    <a class="navbar-brand" href="#">Expense Tracker</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="/home">Home</a></li>
-                    <li class="active"><a href="">Visualise Data</a></li>
+                    <li class="active"><a href="/">Visualise Data</a></li>
                     <li><a href="/expenses">View Expenses</a></li>
                     <li><a href="/add_expense">Add Transaction</a></li>
                 </ul>
             </div>
         </nav>
-    </head>
-    <body>
-        <h1>Total Expenditure</h1>
-        <h3 id="expense">{{total_expense}}</h3>
-        <h1>Total Income</h1>
-        <h3 id="income">{{total_income}}</h3>
-        <h1>Income - Expenses</h1>
-        <h3>{{total_income - total_expense}}</h3>
 
-        {% if goal %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Goal Name</th>
-                    <th>Goal Cost</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td id="goal_name">{{ goal.name }}</td>
-                    <td id="goal_value">{{ goal.cost }}</td>
-                </tr>
-            </tbody>
-        </table>
-        {% else %}
-        <p>No goal set yet.</p>
-        {% endif %}
-
-        <div style="width: 80%; margin: auto">
-            <canvas id="myPieChart"></canvas>
+        <div class="banner">
+            <p id="welcome">Welcome to My Expense Tracker</p>
         </div>
 
-        <div style="width: 80%; margin: auto">
-            <canvas id="myBarChart"></canvas>
+        <div class="content-wrapper">
+            <div class="info">
+                <h1>Your Total Expenditure (£)</h1>
+                <h2 id="expense">{{'%0.2f' % total_expense}}</h2>
+                <h1>Your Total Income (£)</h1>
+                <h2 id="income">{{'%0.2f' % total_income}}</h2>
+                <h1>Your Remaining Balance (£)</h1>
+                <p>(income - expenses)</p>
+                <h2>{{'%0.2f' % (total_income - total_expense)}}</h2>
+                {% if goal %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Goal Name</th>
+                            <th>Goal Value (£)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="goal_name">{{ goal.name }}</td>
+                            <td id="goal_value">{{'%0.2f' % goal.cost }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                {% else %}
+                <div id="goal_name"></div>
+                <p id="goal_value">No goal set yet.</p>
+                {% endif %}
+            </div>
+
+            <!-- Adding charts div -->
+            <div class="charts">
+                <div style="width: 100%; margin: auto">
+                    <canvas id="myPieChart"></canvas>
+                </div>
+                <div style="width: 100%; margin: auto; height: 400px">
+                    <canvas id="myBarChart"></canvas>
+                </div>
+                <p id="dummy"></p>
+            </div>
         </div>
 
-        <script src="../static/pie.js"></script>
+        <script src="../static/JS/pie.js"></script>
     </body>
 </html>

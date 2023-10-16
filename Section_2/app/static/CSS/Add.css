@@ -1,0 +1,69 @@
+html,
+body {
+    background-color: #eaddff;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.type {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    color: red;
+}
+form {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    margin-right: 50px;
+}
+
+#expense {
+    text-align: center;
+    margin-top: 15vh;
+}
+
+.BW {
+    font-size: 2vh;
+}
+
+.enter {
+    background-color: #8572b4;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 4px;
+    color: black !important;
+    transform: skew(-10deg);
+    text-transform: skew(10deg) !important;
+}
+
+.test {
+    position: relative;
+    width: 30vw;
+    left: 35%;
+    border-radius: 12px;
+    border: 1vh solid #6750a4;
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
+}
+
+@media only screen and (max-width: 1100px) {
+    .test {
+        width: 70%;
+        left: 15%;
+    }
+}
+
+@media only screen and (max-width: 677px) {
+    .test {
+        width: 90%;
+        left: 5%;
+    }
+}

@@ -2,44 +2,47 @@
 <html>
     <head>
         <title>Add Goal</title>
-        <link rel="stylesheet" href="../static/Add.css" />
-        <link rel="icon" type="image/x-icon" href="../static/logo.png" />
-
+        <link rel="icon" type="image/x-icon" href="../static//Images/logo.png" />
+        
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
         />
+        <link rel="stylesheet" href="../static/CSS/Add.css" />
 
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/home">Expense Tracker</a>
+                    <a class="navbar-brand" href="#">Expense Tracker</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/visualise">Visualise Data</a></li>
+                    <li><a href="/">Visualise Data</a></li>
                     <li><a href="/expenses">View Expenses</a></li>
                     <li class="active"><a href="/add_expense">Add Transaction</a></li>
                 </ul>
             </div>
         </nav>
+        <html lang="en">
+        <script src="../static/JS/valid.js"></script>
     </head>
     <body>
-        <h1>Add Goal</h1>
-        <form action="" method="post">
-            <p>
-                Name <br />
-                {{ form.name }}
-            </p>
+        <h1 id="expense">Add Goal</h1>
+        <div class="test">
+            <form name="form1" action="" method="post" class="content">
+                <div class="form-group">
+                    <label for="name" class="BW CUtitle">Name</label>
+                    {{ form.name(class="form-control", id="name", placeholder="Enter name") }}
+                </div>
 
-            <p>
-                Cost <br />
-                {{ form.cost }}<br />
-            </p>
+               <div class="form-group">
+                    <label for="cost" class="BW CUtitle">Goal Value</label>
+                    {{ form.cost(class="form-control", id="cost", placeholder="Enter Value") }}
+                </div>
 
-            <p><input type="submit" value="Add Goal" /></p>
-            {{ form.hidden_tag() }}
-        </form>
+                <p><input class="enter" type="submit" value="Add Goal" /></p>
+                {{ form.hidden_tag() }}
+            </form>
+        </div>
     </body>
 </html>

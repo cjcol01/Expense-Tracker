@@ -2,42 +2,59 @@
 <html>
     <head>
         <title>Edit Expense</title>
-        <link rel="icon" type="image/x-icon" href="../static/logo.png" />
+        <link rel="icon" type="image/x-icon" href="../static/Images/logo.png" />
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
         />
+        <link rel="stylesheet" href="../static/CSS/Add.css" />
+        <!-- Assuming your Add.css also has the styles for forms -->
 
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/home">Expense Tracker</a>
+                    <a class="navbar-brand" href="#">Expense Tracker</a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/visualise">Visualise Data</a></li>
+                    <li><a href="/">Visualise Data</a></li>
                     <li><a href="/expenses">View Expenses</a></li>
-                    <li><a href="/add_expense">Add Transaction</a></li>
+                    <li class="active"><a href="/add_expense">Edit Transaction</a></li>
                 </ul>
             </div>
         </nav>
+        <script src="../static/JS/valid.js"></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <html lang="en" >
     </head>
     <body>
-        <h1>Edit Expense</h1>
-        <form action="{{ url_for('edit_expense', id=expense.id) }}" method="post">
-            {{ form.hidden_tag() }}
-            <p>
-                {{ form.name.label }}<br />
-                {{ form.name(value=expense.name) }}
-            </p>
-            <p>
-                {{ form.cost.label }}<br />
-                {{ form.cost(value=expense.cost) }}
-            </p>
-            <p>
-                <input type="submit" value="Submit" />
-            </p>
-        </form>
+        <div id="bg-color">
+            <h1 id="expense">Edit Expense</h1>
+
+            <div class="test">
+                <form
+                    name="form1"
+                    action="{{ url_for('edit_expense', id=expense.id) }}"
+                    method="post"
+                    class="content"
+                >
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <label for="name" class="BW CUtitle">Name</label>
+                        {{ form.name(class="form-control", id="name", placeholder="Enter name",
+                        value=expense.name) }}
+                    </div>
+                    <div class="form-group">
+                        <label for="cost" class="BW CUtitle">Cost</label>
+                        {{ form.cost(class="form-control", id="cost", placeholder="Enter cost",
+                        value=expense.cost) }}
+                    </div>
+
+                    <p><input class="enter" type="submit" value="Edit Expense" /></p>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

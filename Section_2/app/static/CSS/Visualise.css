@@ -1,0 +1,64 @@
+html,
+body {
+    font-family: "Noto Sans", sans-serif;
+    background-color: #eaddff;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.banner {
+    background-color: #6750a4;
+}
+
+.navbar,
+.banner {
+    margin: 0;
+    padding: 0;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.info {
+    border: 1vh solid #6750a4;
+    max-width: 90%;
+    border-radius: 7px;
+    padding: 0.5vw;
+    text-align: center;
+}
+
+.charts {
+    width: 100%;
+    padding-right: 2vw;
+}
+
+#welcome {
+    font-size: 4vh;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    color: black;
+}
+
+@media screen and (min-width: 1200px) {
+    .content-wrapper {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .info {
+        margin-left: 12% !important;
+        margin: auto 0;
+    }
+    .charts {
+        width: 50%;
+    }
+}
+
+#dummy {
+    text-align: center;
+}

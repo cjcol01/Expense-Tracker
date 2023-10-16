@@ -1,17 +1,10 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, jsonify
 from app import app
 from .forms import AddExpense, EditExpense, AddGoalForm
 from app.models import Expense, Goal
 from app import db
 
-
-@app.route('/home')
-def index():
-    return render_template('Home.html',
-                           title='Homepage',
-                        )
-
-@app.route("/visualise")
+@app.route("/")
 def visualise():
     total_expense = db.session.query(db.func.sum(Expense.cost)).filter(Expense.expense_type == True).scalar()
     if total_expense is None:
@@ -91,16 +84,20 @@ def edit_expense(id):
 
     return render_template('EditExpense.html', form=form, expense=expense)
 
-# change?
 @app.route('/delete_expense/<int:id>', methods=['POST'])
 def delete_expense(id):
+    print("hello\n\n")
+    print(f"Trying to delete expense with id {id}")  # Debug line
+
     try:
         expense_to_delete = Expense.query.get_or_404(id)
         db.session.delete(expense_to_delete)
         db.session.commit()
         return jsonify({'success': True}), 200
-    except:
+    except Exception as e:
+        print(f"An error occurred: {e}")
         return jsonify({'success': False}), 500
+
 
 @app.route('/goal', methods=['GET', 'POST'])
 def add_goal():
