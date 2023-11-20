@@ -1,6 +1,7 @@
 # Expense-Tracker
 
 # Auto-start
+- create a venv using ```python -m venv /path/to/new/virtual/environment```
 - Run ```./flaskstart.sh``` from root directory (Expense-Tracker)
 
 # Manual start
